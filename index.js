@@ -35,6 +35,12 @@ app.get('/', (req,res)=>{
   })
 })
 
+app.get('/test', (req,res)=>{
+  emotes.find().then(emotes=>{
+    res.json(emotes)
+  })
+})
+
 app.get('/pin', (req,res)=>{
 
   const brawler = req.query.brawler

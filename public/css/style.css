@@ -1,6 +1,9 @@
 body{
   margin: 0;
   padding: 0;
+}
+
+.app{
   font-family: "Roboto", sans-serif;
 }
 
@@ -9,6 +12,10 @@ body{
   margin-top: 15%;
   font-weight: bold;
   font-size: 150%;
+}
+
+.pin-transition{
+  transition: 0.1s;
 }
 
 .card:hover .pin-transition{

@@ -13,9 +13,9 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://brawlemotes.xyz">
   <meta property="og:description" content="An all-in-one place for Brawl Stars pins!">
-  <meta property="og:image" content="images/logo.png">
+  <meta property="og:image" content="https://cdn.brawlemotes.xyz/Player/Player_Laugh.png">
 
-  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="https://cdn.brawlemotes.xyz/Player/Player_Laugh.png">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -26,7 +26,7 @@
 </head>
 
 <body>
-
+  <noscript>You'll NEED to enable javascript to run this page.</noscript>
   <div class="app">
     <div class="title"> 
       <h1 class="text-3xl font-bold md:text-5xl">Brawl Emotes</h1>
@@ -35,27 +35,28 @@
   <br><br><br>
     <div class=" flex flex-col flex-wrap p-2 font-sans bg-gray-100 md:content-between tems-stretch md:flex-row">
       <%emotes.forEach(function(emote){ %>
-<div data-v-08f509da="" class=" card relative flex justify-center flex-1 h-40 p-2 m-2 text-center text-justify transition-colors duration-300 ease-in border-4 border-white rounded-md cursor-pointer group shadow-yellow-lg hover:border-purple-600 hover:shadow-none bg-white" style="min-width: 175px;"><div data-v-6fc542e4="" data-v-08f509da="" class="flex flex-col self-stretch group-hover:mt-3"><div data-v-6fc542e4="" class="flex items-center justify-center flex-1 mx-auto">
+<div data-v-08f509da="" class=" card relative flex justify-center flex-1 h-40 p-2 m-2 text-center text-justify transition-colors duration-300 ease-in border-4 border-white rounded-md cursor-pointer group shadow-yellow-lg hover:border-purple-600 hover:shadow-none bg-white" style="min-width: 175px;" onclick="trigger('<%=emote.pin%>')"><div data-v-6fc542e4="" data-v-08f509da="" class="flex flex-col self-stretch group-hover:mt-3"><div data-v-6fc542e4="" class="flex items-center justify-center flex-1 mx-auto">
 <img src="<%=emote.url%>" class="pin-transition"/>
 </div><div data-v-6fc542e4="" class="mb-2 text-sm text-center"><%=emote.pin%></div></div></div>
   <% }); %>
     </div>
+  <div class="m-10">
+    <span class="font-semibold justify-center flex text-sm m-2">Under construction, more pins coming soon!</span>
+    <div class="flex justify-center font-bold ">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <polyline points="7 8 3 12 7 16" />
+      <polyline points="17 8 21 12 17 16" />
+      <line x1="14" y1="4" x2="10" y2="20" />
+    </svg><span>with</span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+    </svg><span>By <a class="color-blue-500 underline" rel="noopener norefferer" target="_blank" href="https://github.com/memastermind">MasterMind</a></span>
+    </div>
+  </div>
 
-<div class="flex justify-center font-bold m-4">
-  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <polyline points="7 8 3 12 7 16" />
-  <polyline points="17 8 21 12 17 16" />
-  <line x1="14" y1="4" x2="10" y2="20" />
-</svg><span>with</span><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-</svg><span>By <a class="color-blue-500 underline" rel="noopener norefferer" target="_blank" href="https://github.com/memastermind">MasterMind</a></span>
 </div>
-
-
-</div>
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
