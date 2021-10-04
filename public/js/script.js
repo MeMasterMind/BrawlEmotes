@@ -1,10 +1,3 @@
-
-  // fetch("/api/emotes").then(res=>{
-  //   res.json().then(data=>{
-  //     return data
-  //   })
-  // })
-
 var pinsArray;
 
 fetch("/api/emotes")
@@ -19,14 +12,16 @@ function trigger (triggerredPin){
   title: '<strong>'+result[0].pin+'</strong>',
   imageUrl: result[0].url,
   imageAlt: 'pin',
-  html:'<strong>Brawler</strong>: '+result[0].brawler+'<br><strong>Rarity: </strong>'+result[0].rarity+'<Br><br><button data-id="'+result[0].url+'" class=" copy-text-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"> Copy</button> <button data-id="'+result[0].url+'" class="download-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Download</button>'
+  html:'<strong>Brawler</strong>: '+result[0].brawler+'<br><strong>Rarity: </strong>'+result[0].rarity+'<Br><br><button data-id="'+result[0].url+'" class=" copy-text-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"> Copy</button> <button data-id="'+result[0].url+'" class="download-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Download</button><br><h1 id="hidden-copy">Works in Discord as well✨</h1>'
   })
 
   document.querySelectorAll('.copy-text-button').forEach(item => {
   item.addEventListener('click', event => {
     const url = item.getAttribute("data-id")
+    const span = document.getElementById("hidden-copy")
     navigator.clipboard.writeText(url)
     .then(item.innerHTML = "🎉Copied!")
+    .then(span.style.display = "block")
   })
 
     document.querySelectorAll('.download-button').forEach(item => {
