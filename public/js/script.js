@@ -12,7 +12,7 @@ function trigger (triggerredPin){
   title: '<strong>'+result[0].pin+'</strong>',
   imageUrl: result[0].url,
   imageAlt: 'pin',
-  html:'<strong>Brawler</strong>: '+result[0].brawler+'<br><strong>Rarity: </strong>'+result[0].rarity+'<Br><br><button data-id="'+result[0].url+'" class=" copy-text-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"> Copy</button> <button data-id="'+result[0].url+'" class="download-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Download</button><br><h1 id="hidden-copy">Works in Discord as well✨</h1>'
+  html:'<strong>Brawler</strong>: '+result[0].brawler+'<br><strong>Rarity: </strong>'+result[0].rarity+'<Br><br><button data-id="'+result[0].url+'" class=" copy-text-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"> Copy</button> <button pin-name = "'+result[0].pin+'"data-id="'+result[0].url+'" class="download-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Download</button><br><h1 id="hidden-copy"style="display:none;">Works in Discord as well✨</h1>'
   })
 
   document.querySelectorAll('.copy-text-button').forEach(item => {
@@ -27,33 +27,26 @@ function trigger (triggerredPin){
     document.querySelectorAll('.download-button').forEach(item => {
   item.addEventListener('click', event => {
     const url = item.getAttribute("data-id")
-    downloadResource(url, "pin")
+    const pinName = item.getAttribute("pin-name")
+    forceDownload(url, pinName)
   })
   })
 })
 }
 
-function forceDownload(blob, filename) {
-  var a = document.createElement('a');
-  a.download = filename;
-  a.href = blob;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+function toDataURL(url) {
+    return fetch(url).then((response) => {
+            return response.blob();
+        }).then(blob => {
+            return URL.createObjectURL(blob);
+        });
 }
 
-function downloadResource(url, filename) {
-  if (!filename) filename = url.split('\\').pop().split('/').pop();
-  fetch(url, {
-    headers: new Headers({
-      'Origin': location.origin
-    }),
-    mode: 'cors'
-  })
-    .then(response => response.blob())
-    .then(blob => {
-      let blobUrl = window.URL.createObjectURL(blob);
-      forceDownload(blobUrl, filename);
-    })
-    .catch(e => console.error(e));
+async function forceDownload(url,filename) {
+        const a = document.createElement("a");
+        a.href = await toDataURL(url);
+        a.download = filename+".png"
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
 }

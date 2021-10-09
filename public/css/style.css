@@ -3,6 +3,10 @@ body{
   padding: 0;
 }
 
+body, .main-cont{
+  background: #f0f0f0 !important;
+}
+
 .app{
   font-family: "Roboto", sans-serif;
 }

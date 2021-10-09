@@ -4,16 +4,16 @@ const dotenv = require("dotenv")
 const PORT = process.env.PORT || 3000;
 const URI = process.env.URI
 const app = express();
-const mongoose =require("mongoose")
-
+const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
 dotenv.config()
+
+app.use(express.urlencoded({ extended: false }))
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(express.json())
 
 mongoose.connect(URI, {
     keepAlive: 1,
@@ -41,6 +41,10 @@ app.get('/test', (req,res)=>{
   })
 })
 
+app.post("/test", (req,res)=>{
+  console.log(req.body.data)
+})
+
 app.get('/pin', (req,res)=>{
 
   const brawler = req.query.brawler
@@ -55,6 +59,23 @@ app.get('/pin', (req,res)=>{
 app.get('/api/emotes', (req,res)=>{
   emotes.find().then(Data=>{res.json(Data)})
 })
+
+app.post("/add", (req,res)=>{
+  emotes.create({
+    brawler: req.body.brawler,
+    pin: req.body.pin,
+    url:req.body.url,
+    rarity: req.body.rarity
+  },function(err,res){
+    if(err){
+      console.log(err)
+    }
+    else if (res){
+      console.log(res)
+    }
+  })
+})
+
 
 app.listen(PORT, function () {
   console.log('Listening on port ' + PORT);
