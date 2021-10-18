@@ -10,9 +10,7 @@ function trigger (triggerredPin){
 
      Swal.fire({
   title: '<strong>'+result[0].pin+'</strong>',
-  imageUrl: result[0].url,
-  imageAlt: 'pin',
-  html:'<strong>Brawler</strong>: '+result[0].brawler+'<br><strong>Rarity: </strong>'+result[0].rarity+'<Br><br><button data-id="'+result[0].url+'" class=" copy-text-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"> Copy</button> <button pin-name = "'+result[0].pin+'"data-id="'+result[0].url+'" class="download-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Download</button><br><h1 id="hidden-copy"style="display:none;">Works in Discord as well✨</h1>'
+  html:'<img src="'+result[0].url+'" style="height:84px; width:auto;margin-left:auto;margin-right:auto;" /><br><strong>Brawler</strong>: '+result[0].brawler+'<br><strong>Rarity: </strong>'+result[0].rarity+'<Br><br><button data-id="'+result[0].url+'" class=" copy-text-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"> Copy</button> <button pin-name = "'+result[0].pin+'"data-id="'+result[0].url+'" class="download-button bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded">Download</button><br><h1 id="hidden-copy"style="display:none;">Works in Discord as well✨</h1>'
   })
 
   document.querySelectorAll('.copy-text-button').forEach(item => {
