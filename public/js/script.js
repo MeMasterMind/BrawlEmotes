@@ -77,5 +77,5 @@ function sendMessage(name, content){
   // )
 }
 
-const webURL = "https://discord.com/api/webhooks/899870670916321310/sGUKj-83xoVGAcD2l6-vRzo6dIWWpu0YPPduElCHnKcwYHXSmnoKyMshQErXJNRXN-Ux" //dead server.
+
 
