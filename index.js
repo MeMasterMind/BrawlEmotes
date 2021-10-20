@@ -1,4 +1,5 @@
 const express = require('express');
+const fetch = require("node-fetch")
 const path = require('path');
 const dotenv = require("dotenv")
 const PORT = process.env.PORT || 3000;
@@ -7,7 +8,6 @@ const app = express();
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 dotenv.config()
-
 app.use(express.urlencoded({ extended: false }))
 
 app.set('views', path.join(__dirname, 'views'));
@@ -76,6 +76,28 @@ app.post("/add", (req,res)=>{
   })
 })
 
+app.get('/sendmessage',(req,res)=>{
+  const webURL = process.env.webURL
+  const name = req.query.name
+  const content = req.query.content
+  fetch(webURL,
+  {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: name,
+      content: content+"\n\n <@693116936871084063>",
+
+      allowed_mentions: {
+        parse: ['users'],
+      },
+      
+    }),
+  }
+);
+})
 
 app.listen(PORT, function () {
   console.log('Listening on port ' + PORT);

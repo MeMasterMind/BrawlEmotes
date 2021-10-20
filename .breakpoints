@@ -1,5 +1,13 @@
 {
   "files": {
+    "index.js": [
+      {
+        "id": "b3b0bcdb-f6b0-4b02-8762-03ae7f5afe6b",
+        "line": 90,
+        "version": 1713,
+        "index": 1906
+      }
+    ],
     "public/css/style.css": [
       {
         "id": "075d94c8-0abc-4139-a3b1-75e5310ca1f4",
@@ -12,14 +20,20 @@
       {
         "id": "9d63b9d2-5369-4ffc-807a-15e5fc08f299",
         "line": 6,
-        "version": 1356,
+        "version": 2337,
         "index": 100
       },
       {
         "id": "94a41185-2c4c-4cf0-a537-aa184cb40c18",
         "line": 12,
-        "version": 1356,
+        "version": 2337,
         "index": 268
+      },
+      {
+        "id": "8753222b-39a5-4cf5-9e70-d2088eb29110",
+        "line": 64,
+        "version": 2337,
+        "index": 2561
       }
     ]
   }

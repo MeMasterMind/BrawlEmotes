@@ -48,3 +48,34 @@ async function forceDownload(url,filename) {
         a.click();
         document.body.removeChild(a);
 }
+
+
+
+function suggest () {
+
+  Swal.fire({
+    title: "Suggest Pins",
+    html: '<input id="name" placeholder="Name"/><br><input id="content" placeholder="What would you like to suggest?"/><br><br><button id="submit" class="cursor-pointer bg-purple-500 text-white p-3 rounded-md hover:bg-purple-700 ">Submit</button>',
+    showConfirmButton:false
+  })
+  const namee = document.getElementById("name").value
+  const contentt = document.getElementById("content").value
+
+  const buttonn = document.getElementById("submit")
+  buttonn.addEventListener('click',()=>{
+    sendMessage(namee, contentt)
+  })
+}
+
+function sendMessage(name, content){
+  fetch("/sendmessage?name="+name+"&content="+content)
+  // .then(Swal.fire({
+  //   title:"Successfully sent!",
+  //   icon: "success",
+  //   text:"Contact MasterMind#6098 on Discord for more."
+  // })
+  // )
+}
+
+const webURL = "https://discord.com/api/webhooks/899870670916321310/sGUKj-83xoVGAcD2l6-vRzo6dIWWpu0YPPduElCHnKcwYHXSmnoKyMshQErXJNRXN-Ux" //dead server.
+
