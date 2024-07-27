@@ -1,13 +1,12 @@
 const express = require('express');
 const fetch = require("node-fetch")
 const path = require('path');
-const dotenv = require("dotenv")
+require("dotenv").config()
 const PORT = process.env.PORT || 3000;
 const URI = process.env.URI
 const app = express();
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
-dotenv.config()
 app.use(express.urlencoded({ extended: false }))
 
 app.set('views', path.join(__dirname, 'views'));
@@ -16,10 +15,11 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connect(URI, {
-    keepAlive: 1,
+    keepAlive: true,
     useNewUrlParser: true,
     useUnifiedTopology: true
     })
+mongoose.set('strictQuery', true);
 
 const connection = mongoose.connection;
 
